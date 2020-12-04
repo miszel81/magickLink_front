@@ -15,13 +15,17 @@ class MagicAuth extends Component {
 
   async onSubmit(e) {
     e.preventDefault();
+    // First step, user sends email to create or authenticate an account.
     const didToken = await magic.auth.loginWithMagicLink({
       email: this.state.email,
     });
+    //magic responds with link to user email account, if clicked and sucessfully processed =>  isLoggedIn return true
     const isLoggedIn = await magic.user.isLoggedIn();
 
     if (isLoggedIn) {
+      // post a callback req to the server, if status 200 server responds with a session cookie
       await http.magicLink(didToken);
+      // req with a session cookie to get a user Objcet in response
       await this.props.getUser();
       history.push("/dashboard");
     }
@@ -57,10 +61,4 @@ class MagicAuth extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isSignedIn: state.isLoggedIn,
-  };
-};
-
-export default connect(mapStateToProps, { getUser, logout })(MagicAuth);
+export default connect(null, { getUser, logout })(MagicAuth);

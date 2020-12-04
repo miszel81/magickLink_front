@@ -13,17 +13,9 @@ class Navbar extends Component {
       case null:
         return;
       case false:
-        return (
-          <li>
-            <a href="/login">Login with Magic</a>
-          </li>
-        );
+        return <a href="/login">Login with Magic</a>;
       default:
-        return (
-          <li>
-            <a onClick={this.logoutHandler}>Logout</a>
-          </li>
-        );
+        return <a onClick={this.logoutHandler}>Logout</a>;
     }
   }
 
