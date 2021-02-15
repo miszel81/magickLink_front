@@ -24,7 +24,7 @@ class Navbar extends Component {
       <nav className="cyan darken-3">
         <div className="nav-wrapper">
           <Link
-            to={this.props.auth ? "/dashboard" : "/"}
+            to={this.props.user ? "/dashboard" : "/"}
             className="brand-logo left"
           >
             Home
@@ -37,8 +37,8 @@ class Navbar extends Component {
     );
   }
 }
-const mapStateToProps = ({ auth }) => {
-  return { auth };
+const mapStateToProps = ({ user, auth }) => {
+  return { user, auth };
 };
 
 export default connect(mapStateToProps, { logout })(Navbar);

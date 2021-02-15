@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard";
 import MagicAuth from "./MagicAuth";
 import Navbar from "./Navbar";
 import Home from "./Home";
+import EditProfile from "./EditProfile";
 import { getUser } from "../actions/index";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/profile" exact component={EditProfile} />
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/login" exact component={MagicAuth} />
           </Switch>

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Magic } from "magic-sdk";
 import { connect } from "react-redux";
-import { getUser, logout } from "../actions/index";
-import http from "../apis/http";
+import { getUser, logout, login } from "../actions/index";
 import history from "../history";
 import keys from "../config/keys";
 
@@ -24,7 +23,7 @@ class MagicAuth extends Component {
 
     if (isLoggedIn) {
       // post a callback req to the server, if status 200 server responds with a session cookie
-      await http.magicLink(didToken);
+      await this.props.login(didToken);
       // req with a session cookie to get a user Objcet in response
       await this.props.getUser();
       history.push("/dashboard");
@@ -61,4 +60,4 @@ class MagicAuth extends Component {
   }
 }
 
-export default connect(null, { getUser, logout })(MagicAuth);
+export default connect(null, { getUser, logout, login })(MagicAuth);

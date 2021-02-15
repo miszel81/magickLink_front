@@ -19,16 +19,6 @@ axios.interceptors.response.use(null, (error) => {
   return Promise.reject(error);
 });
 
-const magicLogin = (didToken) => {
-  return axios.create({
-    baseURL: "http://localhost:5000/api/auth/login/callback",
-    headers: {
-      Authorization: "Bearer " + didToken,
-    },
-    method: "POST",
-  })();
-};
-
 export default {
   get: axios.get,
   post: axios.post,
@@ -36,5 +26,4 @@ export default {
   put: axios.put,
   delete: axios.delete,
   create: axios.create,
-  magicLink: magicLogin,
 };

@@ -1,9 +1,9 @@
-import { LOGOUT, GET_USER } from "../actions/types";
+import { LOGIN, LOGOUT } from "../actions/types";
 
-const authReducer = (state = null, action) => {
+const authReducer = (state = false, action) => {
   console.log(action);
   switch (action.type) {
-    case GET_USER:
+    case LOGIN:
       return action.payload || false;
     case LOGOUT:
       return false;
